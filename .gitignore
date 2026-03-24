@@ -1,0 +1,42 @@
+# Environment & secrets
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+
+# Claude Code local
+.claude/
+CLAUDE.md
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node
+node_modules/
+package-lock.json
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build / output
+dist/
+out/
+*.pdf
+*.png
+*.jpg
+
+# Temp
+*.tmp
+*.bak

@@ -1,0 +1,24 @@
+{
+    "name": "claude-skills-public",
+    "description": "AI Agent Skills for LinkedIn content, clean code, lead enrichment, and meeting workflows",
+    "version": "1.0.0",
+    "author": {
+        "name": "Pierre",
+        "email": "hello@pro-dev.fr"
+    },
+    "homepage": "https://github.com/PierreRtec/claude-skills-public",
+    "repository": "https://github.com/PierreRtec/claude-skills-public",
+    "license": "MIT",
+    "keywords": [
+        "claude-code",
+        "claude-code-plugin",
+        "plugin",
+        "ai-agent",
+        "skills",
+        "linkedin",
+        "content",
+        "clean-code",
+        "notion",
+        "productivity"
+    ]
+}
