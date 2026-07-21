@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const c=JSON.parse(process.env.CLAUDE_TOOL_INPUT||'{}').command||''; if(/(git push.*--force|git reset --hard|rm -rf \\/)/.test(c)){console.error('BLOCKED: destructive command detected');process.exit(2)}\""
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"{\\\"ts\\\":\\\"$(date -Iseconds)\\\",\\\"event\\\":\\\"mcp_failure\\\",\\\"tool\\\":\\\"$CLAUDE_TOOL_NAME\\\"}\" >> ~/.claude/mcp-failures.jsonl'"
+          }
+        ]
+      }
+    ]
+  }
+}

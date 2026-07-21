@@ -1,6 +1,6 @@
 # Claude Code Skills
 
-AI agent skills that extend Claude Code with domain-specific expertise : LinkedIn content, clean code, lead enrichment, meeting workflows, and more.
+AI agent skills and hooks that extend Claude Code with domain-specific expertise : clean code, agent recovery, spec writing, LinkedIn content, lead enrichment, meeting workflows.
 
 > **Crafted by a human.** Built with Claude, tested, reviewed and refined by [Pierre](https://pro-dev.fr) (3x Anthropic Certified). No AI slop.
 
@@ -20,6 +20,8 @@ AI agent skills that extend Claude Code with domain-specific expertise : LinkedI
 | Skill | Description | SKILL.md | Full |
 |---|---|---|---|
 | [clean-code](./skills/clean-code/) | Apply Uncle Bob's Clean Code & Clean Architecture principles | ~4,800 | ~6,500 |
+| [doom-loop-recovery](./skills/doom-loop-recovery/) | Detect when the agent is looping on a failing fix, stop, and recover deterministically | ~3,300 | ~3,300 |
+| [user-story](./skills/user-story/) | Turn a rough, informal request into a structured user story before any code is written | ~1,400 | ~1,400 |
 
 ### Business & CRM
 
@@ -27,6 +29,15 @@ AI agent skills that extend Claude Code with domain-specific expertise : LinkedI
 |---|---|---|---|
 | [lead-enrichment](./skills/lead-enrichment/) | Enrich prospect data via LinkedIn/Unipile and push to Notion | ~1,800 | ~1,800 |
 | [meeting-recap](./skills/meeting-recap/) | Structured meeting notes, follow-up emails, and action items in Notion | ~1,200 | ~1,200 |
+
+## Hooks
+
+Skills are prompts : the model *should* follow them. Hooks are code : the runtime *will* run them. Two deterministic guardrails worth stealing, with copy-paste config in [hooks/](./hooks/).
+
+| Hook | Event | What it does |
+|---|---|---|
+| destructive-command-guard | `PreToolUse` on `Bash` | Blocks `git push --force`, `git reset --hard`, `rm -rf /` before they run (exit code 2) |
+| mcp-failure-logger | `PostToolUseFailure` on `mcp__*` | Appends every MCP failure to a JSONL file so silent breakage becomes queryable |
 
 ## Installation
 
@@ -47,6 +58,8 @@ claude skills add PierreRtec/claude-skills-public@linkedin-veille
 
 # Development
 claude skills add PierreRtec/claude-skills-public@clean-code
+claude skills add PierreRtec/claude-skills-public@doom-loop-recovery
+claude skills add PierreRtec/claude-skills-public@user-story
 
 # Business & CRM
 claude skills add PierreRtec/claude-skills-public@lead-enrichment
